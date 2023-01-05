@@ -9,3 +9,7 @@ docker-compose up --build
 cd public
 php -S localhost:8080
 ```
+> OR
+```php
+php -S localhost:8000 -t public
+```
