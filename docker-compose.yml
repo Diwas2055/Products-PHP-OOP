@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  app:
+    build: ./docker
+    image: php_mvc/products_crud
+    ports:
+      - "8088:80" # "8080:80" - if you want to use the port 80
+    volumes:
+      # Mount source-code for development
+      - ./:/var/www
+    extra_hosts:
+      - host.docker.internal:host-gateway
+  db:
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./docker/mysql-config.cnf:/etc/mysql/conf.d/config.cnf
+    restart: 'always'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: php_mvc
+      MYSQL_USER: php_mvc
+      MYSQL_PASSWORD: php_mvc
+
+#Volumes
+volumes:
+  mysql-data:
+    driver: local

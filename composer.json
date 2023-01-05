@@ -1,0 +1,15 @@
+{
+    "name": "php_mvc/good",
+    "authors": [
+        {
+            "name": "Authors",
+            "email": "authors@authors.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    }
+}
